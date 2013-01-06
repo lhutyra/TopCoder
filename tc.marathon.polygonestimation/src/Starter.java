@@ -16,12 +16,12 @@ public class Starter {
         String paramP = inScan.nextLine();
 
         PolygonEstimation polEstInst = new PolygonEstimation();
-        int[] estimationRes = polEstInst.estimate(java.lang.Integer.parseInt(paramD), Integer.parseInt(paramP));
-        System.out.println("2");
-        System.out.println("10");
+        int[] estimationRes = polEstInst.estimate(Double.parseDouble(paramD), Double.parseDouble(paramP));
+        System.out.println(2);
+        System.out.println(10);
          for(int i=0;i<20;i++)
              System.out.println(estimationRes[i]);
-        System.out.flush();
+       System.out.flush();
 
     }
 
