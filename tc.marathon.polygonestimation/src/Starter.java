@@ -4,18 +4,12 @@ public class Starter {
     public static void main(java.lang.String[] strings) {
 
         Scanner inScan = new Scanner(System.in);
-        // String  inScan.nextLine();
-        // marathon.tco12onsite.
-        //System.out.println("1");
-        //System.out.println("0");
-        //System.out.println("0");
-        //System.out.println("300");
-        //System.out.println("300");
+
 
         String paramD = inScan.nextLine();
         String paramP = inScan.nextLine();
 
-        PolygonEstimation polEstInst = new PolygonEstimation();
+        PolygonEstimationTest polEstInst = new PolygonEstimationTest();
         int[] estimationRes = polEstInst.estimate(Double.parseDouble(paramD), Double.parseDouble(paramP));
         System.out.println(2);
         System.out.println(10);
