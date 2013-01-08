@@ -20,8 +20,19 @@ public class PolygonEstimationTest {
         }
     public int[] estimate(double D, double P)
     {
-        for(int i=0;i<20;i++)
-            System.out.println(sendRequest(i+50,0,999,i+50));
+        for(int i=0;i<4;i++)
+            for(int j=0;j<5;j++)
+            {
+                int x1=i+50;
+                int y1=0;
+                int x2=999;
+                int y2=i+50;
+            if(sendRequest(x1,y1,x2,y2)>0)
+            {
+                //intersection
+                //add to array
+            }
+            }
         //return Intersection Approximately at (X, Y)  */
         int[] polygon = new int[20];
 
