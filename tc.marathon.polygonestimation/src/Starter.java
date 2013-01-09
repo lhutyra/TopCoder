@@ -1,8 +1,15 @@
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class Starter {
-    public static void main(java.lang.String[] strings) {
+    public static void main(java.lang.String[] strings) throws Exception {
 
+
+
+        //first run tester.
+
+
+        //SolutionRunner.runTestCase("Starter.class");
         Scanner inScan = new Scanner(System.in);
 
 

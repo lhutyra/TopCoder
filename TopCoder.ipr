@@ -181,9 +181,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/tc.marathon.Cakes/tc.marathon.cakes.iml" filepath="$PROJECT_DIR$/tc.marathon.Cakes/tc.marathon.cakes.iml" />
       <module fileurl="file://$PROJECT_DIR$/tc.marathon.polygonestimation/tc.marathon.polygonestimation.iml" filepath="$PROJECT_DIR$/tc.marathon.polygonestimation/tc.marathon.polygonestimation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tc.marathon.polygonestimation/tc.marathon.polygonestimation.tester/tc.marathon.polygonestimation.tester.iml" filepath="$PROJECT_DIR$/tc.marathon.polygonestimation/tc.marathon.polygonestimation.tester/tc.marathon.polygonestimation.tester.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="VcsDirectoryMappings">
