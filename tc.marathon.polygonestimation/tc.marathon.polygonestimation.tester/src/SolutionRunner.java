@@ -187,50 +187,6 @@ public class SolutionRunner {
             }
         }
     }
-    public static void runTestCase(String execCommand) throws Exception {
-        if (!VisParams.manual) {
-            try {
-                System.out.println("inside run test");
-                String classPath =          "D:\\projects\\TopCoder\\TopCoder\\out\\production\\tc.marathon.polygonestimation\\"+execCommand;
-                System.out.println(classPath);
-                solution = Runtime.getRuntime().exec(classPath);
-            }
-            catch (Exception e) {
-                throw new Exception("Unable to execute your solution using the provided" +
-                        " command: " + execCommand + "." + e.getMessage());
-            }
-
-            scanner = new Scanner(new InputStreamReader(solution.getInputStream()));
-            writer = new PrintWriter(solution.getOutputStream());
-            new ErrorStreamRedirector(solution.getErrorStream()).start();
-
-            writer.println(TestCase.D);
-            writer.println(TestCase.P);
-            writer.flush();
-
-            while (true) {
-                int cmd = scanner.nextInt();
-                if (cmd == REQUEST_CMD) {
-                    int x1 = scanner.nextInt();
-                    int y1 = scanner.nextInt();
-                    int x2 = scanner.nextInt();
-                    int y2 = scanner.nextInt();
-                    handleRequest(x1, y1, x2, y2);
-                } else if (cmd == ESTIMATE_CMD) {
-                    int N = scanner.nextInt();
-                    int[] X = new int[N];
-                    int[] Y = new int[N];
-                    for (int i=0; i<N; i++) {
-                        X[i] = scanner.nextInt();
-                        Y[i] = scanner.nextInt();
-                    }
-                    handleEstimate(X, Y);
-                    break;
-                } else throw new Exception("Integer " + cmd + " does not " +
-                        "correspond neither to request nor to making an estimate.");
-            }
-        }
-    }
 
     public static void stopSolution() {
         if (solution != null) {

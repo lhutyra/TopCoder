@@ -6,33 +6,28 @@ import java.util.Scanner;
  * Time: 20:56
  */
 public class PolygonEstimationTest {
+    private final static int FOUND_FLAG = 2;
 
-        public int sendRequest(int x1,int y1,int x2,int y2)
-        {
-            Scanner inScan = new Scanner(System.in);
-            System.out.println(1);
-            System.out.println(x1);
-            System.out.println(y1);
-            System.out.println(x2);
-            System.out.println(y2);
-            String scanResult = inScan.nextLine();
-            return Integer.parseInt(scanResult);
+    public double[] sendRequestTEST(int x1, int y1, int x2, int y2) {
+        Scanner inScan = new Scanner(System.in);
+        System.out.println(1);
+        System.out.println(x1);
+        System.out.println(y1);
+        System.out.println(x2);
+        System.out.println(y2);
+        String scanResult = inScan.nextLine();
+        if (Integer.parseInt(scanResult) == FOUND_FLAG) {
+            //read x,y.
+            double[] coordinates = new double[2];
+            coordinates[0] = Double.parseDouble(inScan.nextLine());
+            coordinates[1] = Double.parseDouble(inScan.nextLine());
+            return coordinates;
         }
-    public int[] estimate(double D, double P)
-    {
-        for(int i=0;i<4;i++)
-            for(int j=0;j<5;j++)
-            {
-                int x1=i+50;
-                int y1=0;
-                int x2=999;
-                int y2=i+50;
-            if(sendRequest(x1,y1,x2,y2)>0)
-            {
-                //intersection
-                //add to array
-            }
-            }
+        return new double[0];
+    }
+
+    public int[] estimate(double D, double P) {
+        sendBottomTopRays();
         //return Intersection Approximately at (X, Y)  */
         int[] polygon = new int[20];
 
@@ -58,5 +53,16 @@ public class PolygonEstimationTest {
         polygon[19] = 200;
         return polygon;
     }
- }
+
+    private void sendBottomTopRays() {
+
+        for (int i = 0; i < 10; i++) {
+            double[] scanResult = sendRequestTEST((i + 1) * 100, 0, (i + 1) * 100, 999);
+            if (scanResult.length > 1) {
+                System.out.println("x:" + scanResult[0]);
+                System.out.println("y:" + scanResult[1]);
+            }
+        }
+    }
+}
 
