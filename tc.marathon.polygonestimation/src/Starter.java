@@ -7,13 +7,13 @@ public class Starter {
         String paramD = inScan.nextLine();
         String paramP = inScan.nextLine();
 
-        PolygonEstimationTest polEstInst = new PolygonEstimationTest();
+         PolygonEstimationTest polEstInst = new PolygonEstimationTest();
 
-        int[] estimationRes = polEstInst.estimate(Double.parseDouble(paramD), Double.parseDouble(paramP));
+         int[] estimationRes = polEstInst.estimate(Double.parseDouble(paramD), Double.parseDouble(paramP));
 
          System.out.println(2);
          System.out.println(10);
-        for(int i=0;i<20;i++)
+          for(int i=0;i<20;i++)
           System.out.println(estimationRes[i]);
           System.out.flush();
 
