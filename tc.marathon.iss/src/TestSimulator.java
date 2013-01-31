@@ -32,6 +32,8 @@ public class TestSimulator {
        {
            System.out.println(settings[i]);
        }
+        //System.out.println(settings[4]);
+        //System.out.println(settings[5]);
     }
 
 

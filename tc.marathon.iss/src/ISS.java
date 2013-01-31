@@ -16,7 +16,7 @@ public class ISS {
     private static double MAX_SARJ_VELOCITY = 0.15;
     private static double MAX_SARJ_ACCELERATION = 0.005; //degrees/second^2
     private static double MAX_BGA_VELOCITY = 0.25;// DEGREE/SECOND
-    private static double BGA_ACCELERATION = 0.01;//degree/second^2
+    private static double MAX_BGA_ACCELERATION = 0.01;//degree/second^2
 
 
     private static int ORBIT_SECONDS = 92 * 60;
@@ -135,13 +135,13 @@ public class ISS {
     public Boolean TRANSIT_SAW_TO_ANGLE(double angle) {
         //all
         SAW_1A.setCurrentAngle(angle);
-        SAW_1B.setCurrentAngle(angle);
-        SAW_2A.setCurrentAngle(angle);
-        SAW_2B.setCurrentAngle(angle);
-        SAW_3A.setCurrentAngle(angle);
-        SAW_3B.setCurrentAngle(angle);
-        SAW_4A.setCurrentAngle(angle);
-        SAW_4B.setCurrentAngle(angle);
+//        SAW_1B.setCurrentAngle(angle);
+//        SAW_2A.setCurrentAngle(angle);
+//        SAW_2B.setCurrentAngle(angle);
+//        SAW_3A.setCurrentAngle(angle);
+//        SAW_3B.setCurrentAngle(angle);
+//        SAW_4A.setCurrentAngle(angle);
+//        SAW_4B.setCurrentAngle(angle);
         return false;
     }
 
@@ -150,63 +150,65 @@ public class ISS {
     }
 
     public Boolean INITALIZE_ISS() {
-        //  INITIALIZE_SAWS();
+        INITIALIZE_SAWS();
         INITIALIZE_SARJS();
         return false;
     }
 
     private void INITIALIZE_SARJS() {
         strSARJ.initializeSARJ(0);
-        portSARJ.initializeSARJ(0,MAX_SARJ_VELOCITY/3);
+        portSARJ.initializeSARJ(0);
+        SAW_1A.goToAngleAndStop(30, 1, 46);
+        SAW_3A.goToAngleAndStop(30, 1, 46);
     }
 
     private void INITIALIZE_SAWS() {
         //set best angle
-        double angle = 90 + betaAngle;
-      /*  SAW_1A.setInitialAngle(angle, speedToCloseOrbit());
-        SAW_1B.setInitialAngle(angle, speedToCloseOrbit());
-        SAW_2A.setInitialAngle(angle, speedToCloseOrbit());
-        SAW_2B.setInitialAngle(angle, speedToCloseOrbit());
-        SAW_3A.setInitialAngle(angle, speedToCloseOrbit());
-        SAW_3B.setInitialAngle(angle, speedToCloseOrbit());
-        SAW_4A.setInitialAngle(angle, speedToCloseOrbit());
-        SAW_4B.setInitialAngle(angle, speedToCloseOrbit());*/
+        double angle = betaAngle;
+        SAW_1A.setInitialAngle(angle);
+//        SAW_1B.setInitialAngle(angle);
+//        SAW_2A.setInitialAngle(angle);
+//        SAW_2B.setInitialAngle(angle);
+        SAW_3A.setInitialAngle(angle);
+//        SAW_3B.setInitialAngle(angle);
+//        SAW_4A.setInitialAngle(angle);
+//        SAW_4B.setInitialAngle(angle);
     }
 
-    private void ACCELERATE_SAWS_TO(double desireSpeed) {
-        SAW_1A.setCurrentAcceleration(desireSpeed);
-        SAW_1B.setCurrentAcceleration(desireSpeed);
-        SAW_2A.setCurrentAcceleration(desireSpeed);
-        SAW_2B.setCurrentAcceleration(desireSpeed);
-        SAW_3A.setCurrentAcceleration(desireSpeed);
-        SAW_3B.setCurrentAcceleration(desireSpeed);
-        SAW_4A.setCurrentAcceleration(desireSpeed);
-        SAW_4B.setCurrentAcceleration(desireSpeed);
-    }
+//    private void ACCELERATE_SAWS_TO(double desireSpeed) {
+//        SAW_1A.setCurrentAcceleration(desireSpeed);
+//        SAW_1B.setCurrentAcceleration(desireSpeed);
+//        SAW_2A.setCurrentAcceleration(desireSpeed);
+//        SAW_2B.setCurrentAcceleration(desireSpeed);
+//        SAW_3A.setCurrentAcceleration(desireSpeed);
+//        SAW_3B.setCurrentAcceleration(desireSpeed);
+//        SAW_4A.setCurrentAcceleration(desireSpeed);
+//        SAW_4B.setCurrentAcceleration(desireSpeed);
+//    }
+//
+//    private void ACCELERATE_TO_WITH_GIVEN_ANGLE(double desirespeed, double desireAngle) {
+//        SAW_1A.setDesireAngle(desireAngle);
+//        SAW_1B.setDesireAngle(desireAngle);
+//        SAW_2A.setDesireAngle(desireAngle);
+//        SAW_2B.setDesireAngle(desireAngle);
+//        SAW_3A.setDesireAngle(desireAngle);
+//        SAW_3B.setDesireAngle(desireAngle);
+//        SAW_4A.setDesireAngle(desireAngle);
+//        SAW_4B.setDesireAngle(desireAngle);
+//        //ACCELERATE_SAWS_TO(desirespeed);
+//    }
 
-    private void ACCELERATE_TO_WITH_GIVEN_ANGLE(double desirespeed, double desireAngle) {
-        SAW_1A.setDesireAngle(desireAngle);
-        SAW_1B.setDesireAngle(desireAngle);
-        SAW_2A.setDesireAngle(desireAngle);
-        SAW_2B.setDesireAngle(desireAngle);
-        SAW_3A.setDesireAngle(desireAngle);
-        SAW_3B.setDesireAngle(desireAngle);
-        SAW_4A.setDesireAngle(desireAngle);
-        SAW_4B.setDesireAngle(desireAngle);
-        //ACCELERATE_SAWS_TO(desirespeed);
-    }
-
-    public Boolean TRANSIT_SAW_TO_ANGLE(double angle, SAW selectedSAW) {
-        return false;
-    }
-
-    public Boolean ROTATE_SARJ_BY_ANGLE(double angle) {
-        return false;
-    }
-
-    public Boolean ROTATE_SARJ_BY_ANGLE(double angle, SARJ selectedSARJ) {
-        return false;
-    }
+//    public Boolean TRANSIT_SAW_TO_ANGLE(double angle, SAW selectedSAW) {
+//        return false;
+//    }
+//
+//    public Boolean ROTATE_SARJ_BY_ANGLE(double angle) {
+//        return false;
+//    }
+//
+//    public Boolean ROTATE_SARJ_BY_ANGLE(double angle, SARJ selectedSARJ) {
+//        return false;
+//    }
 
     private int get_alphaAngle() {
         return 360 / ORBIT_MINUTES_LENGTH * CurrentMinute;
@@ -228,10 +230,10 @@ public class ISS {
         //calculate alfa
         strSARJ.goToAngle(get_alphaAngle());
         portSARJ.goToAngle(get_alphaAngle());
-        if(CurrentMinute ==20)
-        {
-            portSARJ.setDesireVelocity(portSARJ.speedToCloseOrbit());
-        }
+//        if(CurrentMinute ==20)
+//        {
+//            portSARJ.setDesireVelocity(portSARJ.speedToCloseOrbit());
+//        }
     }
 
     ISS_INSPECTION_SUMMARY INSPECT_ISS() {
@@ -252,14 +254,14 @@ public class ISS {
     }
 
     private void EXECUTE_BATCH() {
-      /*  SAW_1A.ExecuteProgram();
-        SAW_1B.ExecuteProgram();
-        SAW_2A.ExecuteProgram();
-        SAW_2B.ExecuteProgram();
-        SAW_3A.ExecuteProgram();
-        SAW_3B.ExecuteProgram();
-        SAW_4A.ExecuteProgram();
-        SAW_4B.ExecuteProgram();*/
+        SAW_1A.refreshStatus();
+        //    SAW_1B.ExecuteProgram();
+        //  SAW_2A.ExecuteProgram();
+        // SAW_2B.ExecuteProgram();
+        SAW_3A.refreshStatus();
+        // SAW_3B.ExecuteProgram();
+        //SAW_4A.ExecuteProgram();
+        //SAW_4B.ExecuteProgram();*/
 
 
         strSARJ.refreshStatus();
@@ -368,14 +370,15 @@ public class ISS {
         private double initialAngle;
         private double initialVelocity;
         private double desireVelocity;
-         private boolean speedIntervention;
+        private boolean speedIntervention;
+
         public SARJ(ROTATE_ORIENTATION rotate) {
             this.rotateDirection = rotate;
         }
 
         public void setDesireVelocity(double desireVelocity) {
             this.desireVelocity = desireVelocity;
-            speedIntervention=true;
+            speedIntervention = true;
         }
 
         protected double degreeToTravelInCurrentOrbitRun() {
@@ -383,9 +386,8 @@ public class ISS {
             return 360 - Math.abs(initialAngle - currentAngle);
         }
 
-        protected void setSpeedForCloseCurrentOrbit()
-        {
-               this.currentVelocity = speedToCloseOrbit();
+        protected void setSpeedForCloseCurrentOrbit() {
+            this.currentVelocity = speedToCloseOrbit();
         }
 
         protected double speedToCloseOrbit() {
@@ -440,23 +442,23 @@ public class ISS {
                 //double roundTwoDecimals(double d)
                 //  DecimalFormat twoDForm = new DecimalFormat("#.##");
                 //  Double.valueOf(twoDForm.format(d));
-                if(speedIntervention)
-                if (desireVelocity > currentVelocity) {
-                    //accelerate
-                    currentVelocity += MAX_SARJ_ACCELERATION;
-                    if (desireVelocity < currentVelocity)
-                        speedIntervention = false;
-                    if(currentVelocity>MAX_SARJ_VELOCITY)
-                        currentVelocity = MAX_SARJ_VELOCITY;
+                if (speedIntervention)
+                    if (desireVelocity > currentVelocity) {
+                        //accelerate
+                        currentVelocity += MAX_SARJ_ACCELERATION;
+                        if (desireVelocity < currentVelocity)
+                            speedIntervention = false;
+                        if (currentVelocity > MAX_SARJ_VELOCITY)
+                            currentVelocity = MAX_SARJ_VELOCITY;
 
-                } else if (desireVelocity < currentVelocity) {
-                    //deaccelerate
-                    currentVelocity -= MAX_SARJ_ACCELERATION;
-                    if (desireVelocity > currentVelocity)
-                        speedIntervention = false;
-                    if(currentVelocity<-MAX_SARJ_VELOCITY)
-                        currentVelocity = -MAX_SARJ_VELOCITY;
-                }
+                    } else if (desireVelocity < currentVelocity) {
+                        //deaccelerate
+                        currentVelocity -= MAX_SARJ_ACCELERATION;
+                        if (desireVelocity > currentVelocity)
+                            speedIntervention = false;
+                        if (currentVelocity < -MAX_SARJ_VELOCITY)
+                            currentVelocity = -MAX_SARJ_VELOCITY;
+                    }
 
                 currentVelocity += currentAcceleration;
 
@@ -542,18 +544,96 @@ public class ISS {
         public SAW_INSPECTION_STATUS INSPECTION_STATUS;
         private double currentAngle;
         private double angleRotated;
+
+
         private double angleOffset;
         private double currentAcceleration;
         private double currentVelocity;      //degree/s
+
+
+        boolean angleAchievedFinishProgram = false;
         private ROTATE_ORIENTATION rotateDirection;
+        int preparedSecondForManevour;
         private boolean desireAngleAchieved;
         private double desireAngle;
         private boolean maxSpeedAchieved;
+        private boolean speedIntervention;
+        int angleChangeDirection;
+        private double desireVelocity;
+        int secondsInCurrentManevour;
 
         SAW(double angleOffset, ROTATE_ORIENTATION rotationOrienation) {
             this.angleOffset = angleOffset;
             this.rotateDirection = rotationOrienation;
             INSPECTION_STATUS = new SAW_INSPECTION_STATUS();
+        }
+
+        public void goToAngleAndStop(double desireAngle, int clockwise, int secondForIt) {
+            this.desireAngle = desireAngle;
+            angleAchievedFinishProgram = true;
+            angleChangeDirection = clockwise;
+            preparedSecondForManevour = secondForIt;
+            secondsInCurrentManevour = 0;
+        }
+
+        private double getlocalangle() {
+            return 0;
+        }
+
+        private double getlocaldesireangle() {
+            return 0;
+        }
+
+        public void refreshStatus() {
+            double cur_ang = getlocalangle();
+            double des_ang = getlocaldesireangle();
+            //  if (cur_ang <= des_ang) {
+            for (int i = 0; i < 60; i++) {
+
+                //acceleration
+                //double roundTwoDecimals(double d)
+                //  DecimalFormat twoDForm = new DecimalFormat("#.##");
+                //  Double.valueOf(twoDForm.format(d));
+//                if (speedIntervention)
+//                    if (desireVelocity > currentVelocity) {
+//                        //accelerate
+//                        currentVelocity += MAX_BGA_ACCELERATION;
+//                        if (desireVelocity < currentVelocity)
+//                            speedIntervention = false;
+//                        if (currentVelocity > MAX_BGA_VELOCITY)
+//                            currentVelocity = MAX_SARJ_VELOCITY;
+//
+//                    } else if (desireVelocity < currentVelocity) {
+//                        //deaccelerate
+//                        currentVelocity -= MAX_SARJ_ACCELERATION;
+//                        if (desireVelocity > currentVelocity)
+//                            speedIntervention = false;
+//                        if (currentVelocity < -MAX_SARJ_VELOCITY)
+//                            currentVelocity = -MAX_SARJ_VELOCITY;
+//                    }
+                if (angleAchievedFinishProgram) {
+                    //
+                    //
+                    //calculate speed to stop at point and time.
+                    //time left to point.
+                    int secondLeft = preparedSecondForManevour - secondsInCurrentManevour;
+
+
+                }
+                currentAngle += (currentVelocity * getValueRotationDirection()) * angleChangeDirection;
+
+
+                //   currentVelocity += currentAcceleration;
+
+                //  currentAngle += currentVelocity * getValueRotationDirection();
+//                if (currentAngle < 0) {
+//                    currentAngle = 360 - Math.abs(currentAngle) / 360;
+//                } else if (currentAngle > 360) {
+//                    currentAngle = currentAngle / 360;
+//                }
+                secondsInCurrentManevour++;
+            }
+
         }
 
         public boolean isDesireAngleAchieved() {
@@ -569,6 +649,7 @@ public class ISS {
         }
 
         public void ExecuteProgram() {
+
             double degreeAtThisMinute = 0;
             if (currentVelocity > 0) {
                 for (int i = 0; i < 60; i++) {
@@ -578,7 +659,7 @@ public class ISS {
             if (currentAcceleration > 0)//steer by acceleration
                 for (int i = 0; i < 60 && currentAcceleration > 0 && !desireAngleAchieved; i++) {
                     currentVelocity += currentAcceleration;
-                    currentAcceleration -= BGA_ACCELERATION;
+                    currentAcceleration -= MAX_BGA_ACCELERATION;
                     if (currentAcceleration < 0) {
                         currentAcceleration = 0;
                         currentAngle += (currentVelocity / 60);
@@ -656,9 +737,9 @@ public class ISS {
             this.currentAngle = currentAngle * getValueRotationDirection();
         }
 
-        public void setInitialAngle(double initialAngle, double startSpeed) {
+        public void setInitialAngle(double initialAngle) {
             this.currentAngle = initialAngle * getValueRotationDirection();
-            this.currentVelocity = startSpeed;
+            this.currentVelocity = MAX_BGA_VELOCITY;
         }
 
         public double getDesireAngle() {
