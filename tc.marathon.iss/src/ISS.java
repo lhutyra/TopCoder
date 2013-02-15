@@ -150,7 +150,7 @@ public class ISS {
     }
 
     public Boolean INITALIZE_ISS() {
-        INITIALIZE_SAWS();
+      //  INITIALIZE_SAWS();
         INITIALIZE_SARJS();
         return false;
     }
@@ -158,18 +158,18 @@ public class ISS {
     private void INITIALIZE_SARJS() {
         strSARJ.initializeSARJ(0);
         portSARJ.initializeSARJ(0);
-        SAW_1A.goToAngleAndStop(30, 1, 46);
-        SAW_3A.goToAngleAndStop(30, 1, 46);
+        // SAW_1A.goToAngleAndStop(30, 1, 46);
+        // SAW_3A.goToAngleAndStop(30, 1, 46);
     }
 
     private void INITIALIZE_SAWS() {
         //set best angle
         double angle = betaAngle;
-        SAW_1A.setInitialAngle(angle);
+    //    SAW_1A.setInitialAngle(angle);
 //        SAW_1B.setInitialAngle(angle);
 //        SAW_2A.setInitialAngle(angle);
 //        SAW_2B.setInitialAngle(angle);
-        SAW_3A.setInitialAngle(angle);
+        //    SAW_3A.setInitialAngle(angle);
 //        SAW_3B.setInitialAngle(angle);
 //        SAW_4A.setInitialAngle(angle);
 //        SAW_4B.setInitialAngle(angle);
@@ -254,11 +254,11 @@ public class ISS {
     }
 
     private void EXECUTE_BATCH() {
-        SAW_1A.refreshStatus();
+        //  SAW_1A.refreshStatus();
         //    SAW_1B.ExecuteProgram();
         //  SAW_2A.ExecuteProgram();
         // SAW_2B.ExecuteProgram();
-        SAW_3A.refreshStatus();
+        //  SAW_3A.refreshStatus();
         // SAW_3B.ExecuteProgram();
         //SAW_4A.ExecuteProgram();
         //SAW_4B.ExecuteProgram();*/
@@ -547,18 +547,20 @@ public class ISS {
 
 
         private double angleOffset;
+
+        int preparedSecondForManevour;
+
         private double currentAcceleration;
         private double currentVelocity;      //degree/s
 
 
         boolean angleAchievedFinishProgram = false;
         private ROTATE_ORIENTATION rotateDirection;
-        int preparedSecondForManevour;
         private boolean desireAngleAchieved;
         private double desireAngle;
+        int angleChangeDirection;
         private boolean maxSpeedAchieved;
         private boolean speedIntervention;
-        int angleChangeDirection;
         private double desireVelocity;
         int secondsInCurrentManevour;
 
@@ -728,7 +730,7 @@ public class ISS {
 
         public double getCurrentAngle() {
 
-            return currentAngle;
+            return (currentAngle + getAngleOffset()) % 360;
         }
 
         public void setCurrentAngle(double currentAngle) {
@@ -761,7 +763,7 @@ public class ISS {
 
         public double getRealAngle() {
 
-            return (currentAngle + angleOffset) % 360;
+            return (currentAngle);// + angleOffset) % 360;
         }
 
         public double getAngleRotated() {
